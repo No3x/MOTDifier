@@ -19,7 +19,7 @@ Description:
 
 Example Output:
 ------------
-<code># Welcome on raspberrypi ! (Kernel: 3.6.11+)
+<pre># Welcome on raspberrypi ! (Kernel: 3.6.11+)
 #
 # Up since 2013-02-13 22:35:00 (13 days)
 #
@@ -34,7 +34,7 @@ Example Output:
 # rootfs          7,4G    1,8G  5,2G   26% /
 # /dev/sdb1        30G    173M   28G    1% /media/stick
 # /dev/sda1        30G     11G   18G   37% /media/otherstick
-#</code>
+#</pre>
 
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/8c14283d67abef36351300e55d5a06c8 "githalytics.com")](http://githalytics.com/sebka/MOTDifier)
