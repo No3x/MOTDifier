@@ -7,8 +7,8 @@
 # updates the motd
 #
 # (sudo) su
-# copy the script to "/var/opt/motdifier.sh"
-# chmod +x /var/opt/motdifier.sh
+# copy the script to "/var/opt/motdifier/motdifier.sh"
+# chmod +x /var/opt/motdifier/motdifier.sh
 # crontab -e
 # */10 * * * * /var/opt/motdifier/motdifier.sh > /etc/motd
 #
