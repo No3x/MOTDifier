@@ -22,7 +22,7 @@ iTimestampUP=$(( $iTimestampNOW - $iTimeUP ))
 # get disk space usage
 sDiskUsage=`df -h`
 sDiskSpaceFirstLine=`echo "$sDiskUsage" | head -n 1`
-sDiskSpaceOtherLines=`echo "$sDiskUsage" | grep "^rootfs\|^\/dev\/sd" | sed -e "s/^/# /g"`;
+sDiskSpaceOtherLines=`echo "$sDiskUsage" | grep -E "(^rootfs\|^\/dev\/sd)|(^\/dev\/vzfs)" | sed -e "s/^/# /g"`;
 
 # get traffic for each network
 sIfConfig=`/sbin/ifconfig`
@@ -46,8 +46,7 @@ for (( iCount=1; iCount<=$iCountNetworks; iCount++ )); do
 	
 	
 	# build networktraffic string
-	sNetworkTraffic="$sNetworkTraffic# Traffic $sNetworkName Down@ $sDownLoadBytes Up@ $sUpLoadBytes
-"
+	sNetworkTraffic="$sNetworkTraffic# Traffic $sNetworkName Down@ $sDownLoadBytes Up@ $sUpLoadBytes"
 
 done
 
