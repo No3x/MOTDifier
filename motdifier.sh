@@ -19,6 +19,9 @@ iTimeUP=`cat /proc/uptime | awk '{sub(/\.[0-9]+/,"");print $1'}`
 iTimestampNOW=`date +%s`
 iTimestampUP=$(( $iTimestampNOW - $iTimeUP ))
 
+# get information about last login
+sLogins=`last -w`
+sLastLogin=`echo "$sLogins" | head -n 1`
 # get disk space usage
 sDiskUsage=`df -h`
 sDiskSpaceFirstLine=`echo "$sDiskUsage" | head -n 1`
@@ -44,7 +47,6 @@ for (( iCount=1; iCount<=$iCountNetworks; iCount++ )); do
 	sUpLoadBytes=`echo "$sIfConfig" | grep -oP 'TX bytes:[0-9]* \(.*?\)' | grep -oP '\(.*?\)' | head -$iCount | tail -1`
 	sUpLoadBytes=`printf "%-15s" "$sUpLoadBytes"`
 	
-	
 	# build networktraffic string
 	sNetworkTraffic="$sNetworkTraffic# Traffic $sNetworkName Down@ $sDownLoadBytes Up@ $sUpLoadBytes"
 
@@ -56,6 +58,8 @@ echo "#"
 echo "# Up since "`date --date "1970-01-01 $iTimestampUP sec" "+%Y-%m-%d %T"`" ("`uptime | awk '{sub(/\,/,"");print $3" "$4 }'`")"
 echo "#"
 echo "# Users online: "`users`
+echo "#"
+echo "# Last user logged in: $sLastLogin"
 echo "#"
 echo "# Average Load: "`cat /proc/loadavg | awk '{sub(/[0-9]\/[0-9]+ [0-9]+/,"");print $1" "$2" "$3}'`
 echo "#"
